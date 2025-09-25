@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="📚 Book Management App" class="slds-p-around_medium">
+
+        <!-- Add Book Form -->
+        <div class="slds-grid slds-gutters slds-m-bottom_medium">
+            <div class="slds-col">
+            <lightning-input label="Title" value={title} onchange={handleTitleChange}></lightning-input>
+            </div>
+            <div class="slds-col">
+            <lightning-input label="Author" value={author} onchange={handleAuthorChange}></lightning-input>
+            </div>
+            <div class="slds-col">
+            <lightning-input label="Price" type="number" value={price} onchange={handlePriceChange}></lightning-input>
+        </div>
+        </div>
+
+        
+        <lightning-button variant="brand" label="Add Book" onclick={handleAdd}></lightning-button>
+
+        <!-- Show Books in Table -->
+        <template if:true={books}>
+            <lightning-datatable
+                key-field="Id"
+                data={books}
+                columns={columns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Available Doctors">
+        <lightning-combobox label="Specialization"
+                            value={selectedSpecialization}
+                            options={specializationOptions}
+                            onchange={handleSpecializationChange}></lightning-combobox>
+
+        <lightning-datatable key-field="Id"
+                             data={doctors}
+                             columns={columns}
+                             hide-checkbox-column>
+        </lightning-datatable>
+    </lightning-card>
+    
+</template>

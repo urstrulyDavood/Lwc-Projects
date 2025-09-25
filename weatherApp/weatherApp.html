@@ -1,0 +1,45 @@
+<template>
+<lightning-card title="Offline Weather Detector">
+<div class="slds-p-around_medium">
+<template if:true={loading}>
+<div class="status">Detecting location and estimating weather…</div>
+</template>
+
+
+<template if:true={error}>
+<div class="status error">{error}</div>
+</template>
+
+
+<template if:true={weather}>
+<div class="weather-card">
+<div class="top-row">
+<div class="icon">{weather.icon}</div>
+<div class="main">
+<div class="temp">{weather.temperature}°C</div>
+<div class="desc">{weather.description}</div>
+</div>
+</div>
+
+
+<div class="details">
+<p><strong>Location:</strong> {weather.cityLabel}</p>
+<p><strong>Latitude:</strong> {lat}, <strong>Longitude:</strong> {lon}</p>
+<p><strong>Confidence:</strong> {weather.confidence}%</p>
+</div>
+</div>
+</template>
+
+
+<div class="actions slds-m-top_small">
+<lightning-button label="Detect Weather" onclick={handleDetect} class="slds-m-right_small"></lightning-button>
+<lightning-button label="Use Mock Data" variant="neutral" onclick={useMock}></lightning-button>
+</div>
+
+
+<div class="notes slds-m-top_small">
+<p><em>Note:</em> This component estimates weather locally (no external API). For accurate results, plug in a weather API (OpenWeatherMap, Meteo, etc.).</p>
+</div>
+</div>
+</lightning-card>
+</template>

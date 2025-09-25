@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Expense Tracker" icon-name="custom:custom63">
+        <div class="slds-p-around_medium">
+
+            <!-- Total Expense -->
+            <h2 class="slds-text-heading_medium">
+                💰 Total: {totalAmount}
+            </h2>
+
+            <!-- Add Expense Form -->
+            <lightning-input label="Expense Name" value={expName} onchange={handleNameChange}></lightning-input>
+            <lightning-input type="number" label="Amount" value={expAmount} onchange={handleAmountChange}></lightning-input>
+            <lightning-combobox 
+                label="Category" 
+                value={expCategory}
+                options={categoryOptions}
+                onchange={handleCategoryChange}>
+            </lightning-combobox>
+            <lightning-input type="date" label="Date" value={expDate} onchange={handleDateChange}></lightning-input>
+            <lightning-button class="slds-m-top_small" label="Add Expense" variant="brand" onclick={createExpense}></lightning-button>
+        </div>
+
+        <!-- Expenses Table -->
+        <lightning-datatable
+            key-field="Id"
+            data={expenses}
+            columns={columns}
+            hide-checkbox-column="true"
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </lightning-card>
+</template>
